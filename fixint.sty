@@ -1,0 +1,28 @@
+\ProvidePackage{fixint}
+
+
+  \DeclareSymbolFont{EulerExtension}{U}{euex}{m}{n}
+  \DeclareMathSymbol\intop\mathop{EulerExtension}{"52}
+  \DeclareMathSymbol\ointop\mathop{EulerExtension}{"48}
+  \AtBeginDocument{%
+    \def\intkern@{\mkern -6mu }%
+    \def\ints@#1{\mkern -3mu
+      \mathop{\mkern 3mu
+        \intop
+        \ifnum #1=\z@ \intdots@ \else
+          \intkern@
+          \ifnum #1>\tw@ \intop\intkern@
+            \ifnum #1>\thr@@ \intop\intkern@ \fi
+          \fi
+        \fi
+        \intop
+       }\ilimits@
+    }%
+    \renewcommand{\iint}{\DOTSI\protect\MultiIntegral{2}}
+    \renewcommand{\iiint}{\DOTSI\protect\MultiIntegral{3}}
+    \renewcommand{\iiiint}{\DOTSI\protect\MultiIntegral{4}}
+    \renewcommand{\idotsint}{\DOTSI\protect\MultiIntegral{0}}
+  }{}
+
+
+\endinput
