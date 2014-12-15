@@ -7,3 +7,7 @@ install:
 		cp *.sty $(DEST)
 		texhash
 
+uninstall:
+		rm -rf $(DEST)
+		texhash
+
